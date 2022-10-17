@@ -26,7 +26,7 @@ function Navbar() {
                      <li>Portfolio</li>
                 </Link>
                 <Link spy={true} to='Testimonials' smooth={true} activeClass="activeClass">
-                    <li>Testimonials</li>
+                    <li>Education&Skills</li>
                 </Link>
                 
                 
