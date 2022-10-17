@@ -19,9 +19,9 @@ const Services = () => {
                 <span style={{color: darkMode? 'white': ' '}}>My Awesome</span>
                 <span>services</span>
                 <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. sit amet consectetur
+                    I am a Software Developer with Excellenet knowledge of Front-end & Back-end.
                     <br />
-                    sit amet consectetur adipisicing elit.
+                    I have work with many Projects With clean and Beautiful UI/UX.
                 </span>
                 <a href={Resume} download>
                 <button className="button s-button">Download CV</button>

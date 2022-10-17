@@ -19,13 +19,13 @@ export default function Works() {
     <span style={{color:darkMode?'white':' '}}>Works on these</span>
     <span>Technologies</span>
     <span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. sit amet consectetur
+        I am a Quick learner and I have excellent problem Solving Skills.
         <br />
-        sit amet consectetur adipisicing elit.
+        I have Solve 400+ Data Structure & Algrithms Problems.
         <br />
-        sit amet consectetur adipisicing elit. adipisicing elit
+        and also I have worked Html, Css, JavaScript, 
         <br />
-        sit amet consectetur adipisicing elit.
+        ReactJs, NodeJs, MongoDB and other Technologies...
     </span>
  
     <button className="button s-button">Hire me</button>
