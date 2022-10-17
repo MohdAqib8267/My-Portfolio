@@ -28,8 +28,8 @@ function Intro() {
             <div className="i-name">
                 <span style={{color: darkMode? 'white' : ' '}} >Hy! I Am</span>
                 <span>Mohd Aqib</span>
-                <span>Software Developer with high Level of experience in web designing
-                    and development, producting the Quality work
+                <span>I am BTech 3rd Year Student from Jamia Millia Islamia(New Delhi) and I am Software Developer with high Level of experience in web designing
+                    and development, producting the Quality work.
                 </span>
             </div>
             <button className="button i-button">Hire me</button>
