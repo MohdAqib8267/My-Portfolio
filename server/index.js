@@ -4,53 +4,66 @@ const fs = require('fs').promises;  // Use fs.promises for asynchronous file ope
 const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const {
+  Schema,
+  model
+} = require("mongoose");
 dotenv.config();
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-const filePath = path.join(__dirname, "review.json");
+//connection
+mongoose.connect(`mongodb+srv://mohdaqib921:Aqib8267@cluster0.tocokja.mongodb.net/My-Portfolio?retryWrites=true&w=majority`,{
+  useNewUrlParser:true
+}).then((res)=>{
+  console.log(res.connection.host);
+})
 
-app.post("/ad-review", async (req, res) => {
-    const { username, org, rating, msg } = req.body;
-    console.log(req.body);
+//model
+const reviewsSchema = new Schema({
+  username:{type:String, require},
+  rating:{type:Number,require},
+  org:{type:String,require},
+  msg:{type:String,require},
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+})
+const reviewModel = model("Reviews",reviewsSchema);
 
-    try {
-        if (!username || !org || !rating || !msg) {
-            return res.status(400).json({ error: 'Please fill all fields' });
-        }
-
-        const newReview = { username, org, rating, msg };
-        const existingData = await fs.readFile(filePath, 'utf8');
-        const jsonData = JSON.parse(existingData);
-
-        jsonData.push(newReview);
-
-        await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));  // Use null, 2 for pretty formatting
-        res.status(200).json({ message: 'Review added successfully!' });
-    } catch (error) {
-        console.error(error);
-        res.json({ error: "Server error" });
+app.get('/reviews',async(req,res)=>{
+  
+  try {
+    const data = await reviewModel.find({});
+    if(data.length==0){
+      return res.json({error:"No review availabe"});
     }
-});
-
-app.get('/ad-review', async (req, res) => {
-    try {
-        const data = await fs.readFile(filePath, 'utf8');
-        const jsonData = JSON.parse(data);
-
-        if (jsonData.length > 0) {
-            res.status(200).json(jsonData);
-        } else {
-            res.json({ error: "No Review" });
-        }
-    } catch (error) {
-        console.error("Error:", error.message);
-        res.json({ error: "Server error" });
-    }
-});
-
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running at port ${process.env.PORT}`);
-});
+    return res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.json({error:'server error'});
+  }
+})
+app.post('/ad-review',async(req,res)=>{
+  const {username,org,msg,rating}=req.body;
+  console.log(req.body);
+  try {
+    const data=await reviewModel.create({
+      username:username,
+      org:org,
+      msg:msg,
+      rating:rating
+    })
+    return res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.json({error:'server error'});
+  }
+})
+app.listen(process.env.PORT,()=>{
+  console.log(`server is running at ${process.env.PORT}`);
+})

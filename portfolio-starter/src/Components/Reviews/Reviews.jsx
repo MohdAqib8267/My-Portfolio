@@ -66,7 +66,7 @@ const [rev,setRev]=useState([]);
 
   const fetchRev = async () => {
     try {
-      const response = await fetch("http://localhost:8000/ad-review", {
+      const response = await fetch(`https://my-portfolio-backend-jet.vercel.app/ad-review`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
@@ -95,7 +95,7 @@ const AddReview=async(e)=>{
   const op={username,org,rating,msg};
   
   try {
-    const result=await fetch("http://localhost:8000/ad-review",{
+    const result=await fetch(`https://my-portfolio-backend-jet.vercel.app/ad-review`,{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
@@ -103,7 +103,7 @@ const AddReview=async(e)=>{
       body: JSON.stringify(op)
     })
     if (result) {
-      // console.log("Review added successfully!");
+      console.log("Review added successfully!");
       fetchRev();
       setUsername("");
       setMsg("");
