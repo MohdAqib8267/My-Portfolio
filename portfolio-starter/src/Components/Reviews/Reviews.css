@@ -1,0 +1,88 @@
+.rev-container{
+    display: flex;
+    flex-direction: column;
+background: var(--black);
+    gap: 1rem;
+    padding: 2rem 0;
+}
+.rev-container span:nth-child(1){
+    font-size: 2.5rem;
+    color: var(--orange);
+    justify-content: center;
+    display: flex;
+}
+.rev-slider{
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+    gap: 1rem;
+}
+.card1{
+
+       align-items: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: justify;
+    background: var(--blueCard);
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--smboxShadow);
+    
+}
+.rev-name{
+    font-size: 2rem !important;
+    color: var(--gray);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.company{
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+.rating{
+    font-size: 1.2rem;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.rating img{
+    width: 2rem;
+    height: 2rem;
+}
+.rew{
+    font-size: 0.75rem;
+}
+.review-form{
+    padding: 0 3rem 0 3rem;
+    display: flex;
+    margin-top: 4rem;
+}
+
+.slick-slide{
+    
+    scale: 0.9;
+}
+ 
+@media screen and (max-width:480px) {
+    .rev-container{
+        background: transparent;
+    }
+    .rev-slider{
+        padding: 0;
+    }
+    .review-form{
+        padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    }
+    rev-container span:nth-child(1){
+        font-size: 1.4rem;
+    }
+}
