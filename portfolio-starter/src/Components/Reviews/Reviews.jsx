@@ -66,7 +66,7 @@ const [rev,setRev]=useState([]);
 
   const fetchRev = async () => {
     try {
-      const response = await fetch(`https://my-portfolio-backend-jet.vercel.app/ad-review`, {
+      const response = await fetch(`https://my-portfolio-backend-jet.vercel.app/reviews`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json"
