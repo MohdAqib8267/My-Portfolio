@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const fs=require('fs');
 const cors=require('cors');
+const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
 const app=express();
@@ -9,7 +10,11 @@ const app=express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const data = require("./review.json");
+const filePath = path.join(__dirname,"review.json");
+// console.log(filePath);
+
+const data = require(filePath);
+// console.log(data);
 app.post("/ad-review",async(req,res)=>{
     const {username,org,rating,msg}=req.body;
     console.log(req.body);
@@ -19,7 +24,7 @@ app.post("/ad-review",async(req,res)=>{
           }
           const newReview = { username, org, rating, msg };
             data.push(newReview);
-          fs.writeFileSync("./review.json",JSON.stringify(data));
+          fs.writeFileSync(filePath,JSON.stringify(data));
           res.status(200).json({ message: 'Review added successfully!' });
         
     } catch (error) {
@@ -30,7 +35,7 @@ app.post("/ad-review",async(req,res)=>{
 
 app.get('/ad-review', async (req, res) => {
     try {
-      const data = fs.readFileSync("./review.json");
+      const data = fs.readFileSync(filePath);
     //   const jsonData = JSON.parse(data);
     const jsonData=JSON.parse(data);
       
